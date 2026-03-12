@@ -52,5 +52,22 @@
             }
         }
       </script> 
+  <script>
+function attachUnityPointerLock() {
+    if (typeof gameInstance !== "undefined" && gameInstance.Module) {
+        const canvas = gameInstance.Module.canvas;
+        if (canvas) {
+            canvas.addEventListener("mousedown", () => {
+                canvas.requestPointerLock();
+            });
+            console.log("Pointer lock attached to Unity canvas");
+        }
+    } else {
+        setTimeout(attachUnityPointerLock, 500);
+    }
+}
+window.addEventListener("load", attachUnityPointerLock);
+</script>
    </body>
+
 </html>
